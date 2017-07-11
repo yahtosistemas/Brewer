@@ -15,6 +15,7 @@ import com.algaworks.brewer.repository.Usuarios;
 import com.algaworks.brewer.service.exception.EmailUsuarioJaCadastradoException;
 import com.algaworks.brewer.service.exception.ImpossivelExcluirEntidadeException;
 import com.algaworks.brewer.service.exception.SenhaObrigatoriaUsuarioException;
+import com.algaworks.brewer.tenancy.TenancyInterceptor;
 
 @Service
 public class CadastroUsuarioService {
@@ -47,6 +48,7 @@ public class CadastroUsuarioService {
 			usuario.setAtivo(usuarioExistente.get().getAtivo());
 		}
 		
+		usuario.setTenantId(TenancyInterceptor.getTenantId());
 		usuarios.save(usuario);
 	}
 	

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.algaworks.brewer.model.Usuario;
 import com.algaworks.brewer.repository.Usuarios;
+import com.algaworks.brewer.tenancy.TenancyInterceptor;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
@@ -25,6 +26,7 @@ public class AppUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		System.out.println(">>> " + TenancyInterceptor.getTenantId());
 		Optional<Usuario> usuarioOptional = usuarios.porEmailEAtivo(email);
 		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
 		return new UsuarioSistema(usuario, getPermissoes(usuario));

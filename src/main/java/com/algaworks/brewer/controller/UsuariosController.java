@@ -34,7 +34,7 @@ import com.algaworks.brewer.service.exception.ImpossivelExcluirEntidadeException
 import com.algaworks.brewer.service.exception.SenhaObrigatoriaUsuarioException;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/{tenantid}/usuarios")
 public class UsuariosController {
 	
 	@Autowired
@@ -70,7 +70,7 @@ public class UsuariosController {
 		}
 		
 		attributes.addFlashAttribute("mensagem", "Usuário salvo com sucesso");
-		return new ModelAndView("redirect:/usuarios/novo");
+		return new ModelAndView("redirect:/teste1/usuarios/novo");
 	}
 	
 	@GetMapping

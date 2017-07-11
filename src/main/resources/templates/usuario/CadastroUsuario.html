@@ -34,7 +34,7 @@
 	
 	<div class="container-fluid">
 		<form method="POST" th:object="${usuario}" class="form-vertical  js-form-loading" 
-					th:action="${usuario.novo} ? @{/usuarios/novo} : @{/usuarios/{codigo}(codigo=${usuario.codigo})}">
+					th:action="${usuario.novo} ? @{/teste1/usuarios/novo} : @{/teste1/usuarios/{codigo}(codigo=${usuario.codigo})}">
 			<brewer:message/>
 			<input type="hidden" th:field="*{codigo}"/>
 			

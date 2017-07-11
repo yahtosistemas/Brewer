@@ -14,13 +14,14 @@ import com.algaworks.brewer.config.MailConfig;
 import com.algaworks.brewer.config.S3Config;
 import com.algaworks.brewer.config.SecurityConfig;
 import com.algaworks.brewer.config.ServiceConfig;
+import com.algaworks.brewer.config.TenantConfig;
 import com.algaworks.brewer.config.WebConfig;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class, S3Config.class };
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class, SecurityConfig.class, S3Config.class, TenantConfig.class };
 	}
 
 	@Override
@@ -48,6 +49,6 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
-		servletContext.setInitParameter("spring.profiles.default", "prod");		
+		servletContext.setInitParameter("spring.profiles.default", "local");		
 	}
 }
